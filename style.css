@@ -1,0 +1,19 @@
+.node {
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+.link {
+    stroke: #999;
+    stroke-opacity: .6;
+}
+.node text {
+  font: 12px helvetica;
+}
+#search {
+	padding: 20px;
+	font-size: 20px;
+}
+button {
+	padding: 20px;
+	font-size: 20px;
+}

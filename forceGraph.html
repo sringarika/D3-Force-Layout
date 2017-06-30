@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>D3</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <script type="application/json" id="mis">
+    {
+        "nodes": [{
+            "name": "Apple",
+                "group": 1
+        }, {
+            "name": "Ball",
+                "group": 2
+        }, {
+            "name": "Cat",
+                "group": 3
+        }, {
+            "name": "Dog",
+                "group": 4
+        }, {
+            "name": "Elephant",
+                "group": 0
+        }, {
+            "name": "Fish",
+                "group": 5
+        }, {
+            "name": "Grey",
+                "group": 6
+        }],
+            "links": [{
+            "source": 1,
+                "target": 0,
+                "value": 1
+        }, {
+            "source": 2,
+                "target": 0,
+                "value": 2
+        }, {
+            "source": 3,
+                "target": 5,
+                "value": 2
+        }, {
+            "source": 4,
+                "target": 6,
+                "value": 2
+        }, 
+        {
+            "source": 0,
+                "target": 3,
+                "value": 3
+        },
+        {
+            "source": 5,
+                "target": 0,
+                "value": 1
+        },
+        {
+            "source": 6,
+                "target": 3,
+                "value": 1
+        }]
+    }
+</script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+
+<div class="ui-widget">
+    <input id="search">
+    <button type="button" onclick="searchNode()">Search</button>
+</div>
+<div>
+    <h3>Please enter the name of the Node you wish to search. The name is Case-Sensitive. For eg.: "cat" doesnt return anything. "Cat" will show you the node.</h3>
+</div>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
