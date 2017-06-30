@@ -1,11 +1,11 @@
 
-var width = 500,
-    height = 500;
+var width = 1000,
+    height = 700;
 
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
-    .charge(-300)
+    .charge(-350)
     .linkDistance(100)
     .size([width, height]);
 

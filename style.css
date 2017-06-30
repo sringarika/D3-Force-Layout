@@ -9,3 +9,9 @@
 .node text {
   font: 12px helvetica;
 }
+#search {
+	padding: 10px;
+}
+button {
+	padding: 10px;
+}
