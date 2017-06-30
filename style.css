@@ -15,3 +15,8 @@
 button {
 	padding: 10px;
 }
+.ui-autocomplete {
+    background: #b3d9ff;
+	margin-right: 95%; 
+}
+
