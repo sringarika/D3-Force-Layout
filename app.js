@@ -71,6 +71,17 @@ force.on("tick", function () {
     });
 });
 
+var optArray = [];
+for (var i = 0; i < graph.nodes.length - 1; i++) {
+    optArray.push(graph.nodes[i].name);
+}
+optArray = optArray.sort();
+$(function () {
+    $("#search").autocomplete({
+        source: optArray
+    });
+});
+
 function searchNode() {
 
     var selectedVal = document.getElementById('search').value;
