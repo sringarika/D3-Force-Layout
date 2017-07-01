@@ -78,10 +78,34 @@ for (var i = 0; i < graph.nodes.length - 1; i++) {
 optArray = optArray.sort();
 $(function () {
     $("#search").autocomplete({
-        source: optArray
+        source: function (request, response) {
+            var results = $.ui.autocomplete.filter(optArray, request.term);
+             $("#results").text(results.join(", "));
+            show(results);
+             response(results);
+
+        }
     });
 });
 
+function show(results) {
+    var node = svg.selectAll(".node");
+    var selected[];
+
+    for (var i = 0; i < results.length; i++) {
+        var selected[i] = node.filter(function (d,i) {
+        return d.name != results[i];
+    });}
+        
+                    selected.style("opacity", 0);
+                    var link = svg.selectAll("link");
+                    link.style("opacity", "0");
+                    d3.selectAll(".node, .link").transition()
+                    .duration(10000000)
+                    .style("opacity", 1);
+
+                
+}
 function searchNode() {
 
     var selectedVal = document.getElementById('search').value;
@@ -99,7 +123,5 @@ function searchNode() {
         d3.selectAll(".node, .link").transition()
             .duration(5000)
             .style("opacity", 1);
-
-
     }
 }
