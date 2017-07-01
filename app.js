@@ -80,7 +80,6 @@ $(function () {
     $("#search").autocomplete({
         source: function (request, response) {
             var results = $.ui.autocomplete.filter(optArray, request.term);
-             $("#results").text(results.join(", "));
             show(results);
              response(results);
 
@@ -90,18 +89,17 @@ $(function () {
 
 function show(results) {
     var node = svg.selectAll(".node");
-
     for (var j = 0; j < results.length; j++) {
         node = node.filter(function (d, i) {
             return d.name != results[j];
         });
     }
-            node.style("opacity", 0);
-            var link = svg.selectAll("link");
-            link.style("opacity", "0");
-            d3.selectAll(".node, .link").transition()
-            .duration(1000000)
-            .style("opacity", 1);              
+        node.style("opacity", 0);
+        var link = svg.selectAll("link");
+        link.style("opacity", "0");
+        d3.selectAll(".node, .link").transition()
+        .duration(1000000)
+        .style("opacity", 1);              
 }
 function searchNode() {
 
