@@ -76,11 +76,16 @@ for (var i = 0; i < graph.nodes.length - 1; i++) {
     optArray.push(graph.nodes[i].name);
 }
 optArray = optArray.sort();
-$(function () {
+$(function completeNode() {
     $("#search").autocomplete({
         source: function (request, response) {
             var results = $.ui.autocomplete.filter(optArray, request.term);
             show(results);
+            $("#search").on("keydown",
+                function(e) {
+                    if(e.keyCode == 8)
+                        completeNode();
+                });
              response(results);
 
         }
@@ -89,17 +94,17 @@ $(function () {
 
 function show(results) {
     var node = svg.selectAll(".node");
+    node.style("visibility", "visible");
     for (var j = 0; j < results.length; j++) {
         node = node.filter(function (d, i) {
             return d.name != results[j];
         });
     }
-        node.style("opacity", 0);
-        var link = svg.selectAll("link");
-        link.style("opacity", "0");
-        d3.selectAll(".node, .link").transition()
-        .duration(1000000)
-        .style("opacity", 1);              
+        node.style("visibility", "hidden");
+         var link = svg.selectAll("link");
+         link.style("opacity", "0");
+        // d3.selectAll(".node, .link")
+        // .style("opacity", 1);              
 }
 function searchNode() {
 
