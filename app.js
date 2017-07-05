@@ -77,39 +77,45 @@ for (var i = 0; i < graph.nodes.length - 1; i++) {
 }
 optArray = optArray.sort();
 $(function completeNode() {
+    // if ($("#search").val().length == 0) {
+    //             svg.selectAll(".node")
+    //             .style("visibility", "visible");
+    //      }
+    
     $("#search").autocomplete({
         source: function (request, response) {
             var results = $.ui.autocomplete.filter(optArray, request.term);
+            console.log(results);
             show(results);
-            $("#search").on("keydown",
-                function(e) {
-                    if(e.keyCode == 8)
-                        completeNode();
-                });
              response(results);
-
         }
     });
 });
+$("#search").on("keydown", function(e) {
+                    if(e.keyCode == 8)
+                    //svg.selectAll(".node", ".link").style("visibility", "visible");
+                    show();
+                });
 
 function show(results) {
     var node = svg.selectAll(".node");
     node.style("visibility", "visible");
-    for (var j = 0; j < results.length; j++) {
+    if (results.length != 0) {
+        for (var j = 0; j < results.length; j++) {
         node = node.filter(function (d, i) {
             return d.name != results[j];
         });
     }
         node.style("visibility", "hidden");
-         var link = svg.selectAll("link");
-         link.style("opacity", "0");
-        // d3.selectAll(".node, .link")
-        // .style("opacity", 1);              
+    }
+                      
 }
+
 function searchNode() {
 
     var selectedVal = document.getElementById('search').value;
-    var node = svg.selectAll(".node");
+    var node = svg.selectAll(".node")
+    .style("visibility", "visible");
 
     if (selectedVal == "none") {
         node.style("stroke", "white").style("stroke-width", "1");
